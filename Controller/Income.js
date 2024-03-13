@@ -28,7 +28,7 @@ exports.addIncome = async(req,res) => {
 exports.getExpenses = async(req,res)=>{
     try {
         
-        let getExpenses = await Expense.find({}).sort({createdAt:-1});
+        let getExpenses = await Expense.find({userId:req.params.userId}).sort({createdAt:-1});
         if(!getExpenses){
             return res.json({success:false,error:'no expense found'})
         }
@@ -40,8 +40,8 @@ exports.getExpenses = async(req,res)=>{
 }
 exports.getIncome = async(req,res)=>{
     try {
-        
-        let getIncome = await income.find({}).sort({createdAt:-1});
+        console.log(req.params)
+        let getIncome = await income.find({userId:req.params.userId}).sort({createdAt:-1});
         if(!getIncome){
             return res.json({success:false,error:'no income found'})
         }
