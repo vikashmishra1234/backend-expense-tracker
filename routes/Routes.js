@@ -5,14 +5,14 @@ const verifyToken = require('../middleware/verifyauth.js');
 
 const routes = express.Router();
 routes.route('/signup').post(SignUp);
-routes.post('/login',verifyToken,userLogin);
+routes.post('/login',userLogin);
 
-routes.post('/products',verifyToken,addIncome)
-routes.post('/products/expense',verifyToken,addExpense)
-routes.get('/products/:userId',verifyToken,getIncome)
-routes.get('/products/expense/:userId',verifyToken,getExpenses)
-routes.delete('/products/:id',verifyToken,updateIncome)
-routes.delete('/products/expense/:id',verifyToken,deleteExpense)
+routes.post('/products',addIncome)
+routes.post('/products/expense',addExpense)
+routes.get('/products/:userId',getIncome)
+routes.get('/products/expense/:userId',getExpenses)
+routes.delete('/products/:id',updateIncome)
+routes.delete('/products/expense/:id',deleteExpense)
 
 
 module.exports =  routes;
